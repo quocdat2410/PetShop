@@ -1,0 +1,102 @@
+﻿@page
+@model             IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@* <section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">    
+      
+        <div class="container">         
+            <div class="banner_content d-md-flex justify-content-between align-items-center">
+                
+                <div class="mb-3 mb-md-0">   
+                    <img src="~/img/anhmeo.jpg" />
+                    </div> 
+                    <div class="page_link">
+                </div>
+            </div>
+        </div>
+    </div>
+</section> *@
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content d-md-flex justify-content-between align-items-center">
+                <div class="mb-3 mb-md-0" style="text-align: center;">
+                    <img src="~/img/image3-1.png" style="max-width: 100%; height: auto;" /> 
+                </div>
+                <div class="page_link">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cat_product_area " style="margin-top: 40px;">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                
+                <div class="latest_product_inner">
+                    <div class="row">
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-lg-3 col-md-6">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <img class="card-img"
+                                             src="/img/@item.productImage"
+                                             alt="" />
+                                        <div class="p_icon">
+
+                                            <a href="#">
+                                                <i class="ti-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-btm">
+
+                                        <h4><a href="ProductDetail?id=@item.productId" class="d-block">@item.productName</a></h4>
+
+                                        <div class="mt-3">
+                                            <span class="mr-4">$@item.price</span>
+                                            <del>$35.00</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-lg-3">
+                <div class="left_sidebar_area">
+                    <aside class="left_widgets p_filter_widgets">
+                        <div class="l_w_title">
+                            <h3>Browse Categories</h3>
+                        </div>
+                        <div class="widgets_inner">
+                            <ul class="list">
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <li>
+                                        <a href="?categoryId=@category.cateId">@category.cateName</a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

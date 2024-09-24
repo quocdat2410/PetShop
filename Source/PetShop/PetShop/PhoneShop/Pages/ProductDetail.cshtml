@@ -1,0 +1,88 @@
+﻿@page
+@model             ProductDetailModel
+
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content d-md-flex justify-content-between align-items-center">
+                <div class="mb-3 mb-md-0" style="text-align: center;">
+                    <img src="~/img/image3-1.png" style="max-width: 100%; height: auto;" />
+                </div>
+                <div class="page_link">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<h2 style="text-align:center;">Chi tiết sản phẩm</h2>
+<hr style="border-top: 3px solid #000; width: 50%; margin: 0 auto;">
+<br />
+<div class="product_image_area" style="padding-top:0;">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_product_img">
+                    <img style="width:100%" src="/img/@Model.Product.productImage" alt="Product Image">
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>@Model.Product.productName</h3>
+                    <h2>$@Model.Product.price</h2>
+                    <ul class="list">
+                        
+                        <li>
+                            <a href="#"> <span>Color</span> :  @Model.Product.color</a>
+                        </li>
+                         <li>
+                            <a href="#"> <span>Brand</span> :  @Model.Product.brand</a>
+                        </li>
+                       
+                       
+                    </ul>
+                    <p>
+                        <h5>Mô tả sản phẩm:</h5>
+                        @Model.Product.description
+                        <ul>
+                            <li>
+                                <hr style="border-top: 1px solid #000;margin-right:100px">
+                            </li>
+                            <li>
+                                Uy tín, top đầu trên thị trường
+                            </li>
+
+                            <li>
+                                Sản phẩm chính hãng 100%
+                            </li>
+
+                            <li>
+                                Với tiêu chí hỗ trợ các "bé yêu"" của bạn luôn khỏe mạnh
+                            </li>
+
+                            <li>
+                                Cung cấp sản phẩm với mức giá phải chăng và chất lượng
+                            </li>
+
+                        </ul>
+                    </p>
+
+                    <form method="post">
+                        <input type="hidden" name="productId" value="@Model.Product.productId" />
+                        
+                        <button type="submit">Thêm vào giỏ hàng</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   

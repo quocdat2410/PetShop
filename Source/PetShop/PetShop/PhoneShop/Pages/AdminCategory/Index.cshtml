@@ -1,0 +1,35 @@
+﻿@page
+@model PetShop.Models.AdminCategory.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Thêm danh mục mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(model => model.Category[0].CateName) *@ Danh sách các danh mục 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Category) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CateName)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.CateId">Chỉnh sửa</a> 
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.CateId">Xem</a> 
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.CateId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

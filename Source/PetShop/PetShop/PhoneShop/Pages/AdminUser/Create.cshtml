@@ -1,0 +1,56 @@
+﻿@page
+@model PetShop.Models.AdminUser.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Thêm tài khoản đăng nhập</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="User.UserName" class="control-label">Tên đăng nhập</label>
+                <input asp-for="User.UserName" class="form-control" />
+                <span asp-validation-for="User.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Phone" class="control-label">Số điện thoại</label>
+                <input asp-for="User.Phone" class="form-control" />
+                <span asp-validation-for="User.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email" class="control-label"></label>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Password" class="control-label">Mật khẩu</label>
+                <input asp-for="User.Password" class="form-control" />
+                <span asp-validation-for="User.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Role" class="control-label">Vai trò</label>
+                <input asp-for="User.Role" class="form-control" />
+                <span asp-validation-for="User.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.IsAdmin" class="control-label">Là Admin</label>
+                <input asp-for="User.IsAdmin" class="form-control" />
+                <span asp-validation-for="User.IsAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm tài khoản" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Quay trở về</a>
+</div>
+
+

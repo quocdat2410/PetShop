@@ -1,0 +1,51 @@
+﻿@page
+@model PetShop.Models.AdminInvoice.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Chỉnh sửa hóa đơn</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Invoice.InvoiceId" />
+            <div class="form-group">
+                <label asp-for="Invoice.CartId" class="control-label">ID Hóa đơn</label>
+                <select asp-for="Invoice.CartId" class="form-control" asp-items="ViewBag.CartId"></select>
+                <span asp-validation-for="Invoice.CartId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Invoice.UserId" class="control-label">Khách hàng</label>
+                <select asp-for="Invoice.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="Invoice.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Invoice.TotalAmount" class="control-label">Tổng tiền</label>
+                <input asp-for="Invoice.TotalAmount" class="form-control" />
+                <span asp-validation-for="Invoice.TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Invoice.InvoiceDate" class="control-label">Ngày tạo</label>
+                <input asp-for="Invoice.InvoiceDate" class="form-control" />
+                <span asp-validation-for="Invoice.InvoiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Invoice.Status" class="control-label">Trạng thái</label>
+                <input asp-for="Invoice.Status" class="form-control" />
+                <span asp-validation-for="Invoice.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Quay trở về</a>
+</div>
+

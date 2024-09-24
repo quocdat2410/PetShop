@@ -1,0 +1,57 @@
+﻿@page
+@model PetShop.Models.AdminInvoice.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh sách hóa đơn</h1>
+
+@* <p>
+    <a asp-page="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tổng tiền
+            </th>
+            <th>
+                Ngày thanh toán
+            </th>
+            <th>
+                Trạng thái
+            </th>
+           
+            <th>
+                Khách hàng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Invoice) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.InvoiceId">Chỉnh sửa</a> 
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.InvoiceId">Xem</a>
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.InvoiceId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

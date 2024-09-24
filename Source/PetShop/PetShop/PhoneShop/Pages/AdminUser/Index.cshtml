@@ -1,0 +1,67 @@
+﻿@page
+@model PetShop.Models.AdminUser.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh sách tài khoản người dùng (Bao gồm Admin và Khách hàng)</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Thêm tài khoản</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên đăng nhập
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Vai trò
+            </th>
+            <th>
+                Là Admin
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.User) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.UserId">Chỉnh sửa</a> 
+                <a class="btn btn-info"  asp-page="./Details" asp-route-id="@item.UserId">Xem</a> 
+                <a class="btn btn-danger"  asp-page="./Delete" asp-route-id="@item.UserId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

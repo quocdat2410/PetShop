@@ -1,0 +1,47 @@
+﻿@page
+@model PetShop.Models.AdminInvoice.RevenueReportModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h1 class="mt-4 mb-4">Báo cáo doanh thu</h1>
+
+    <form method="get" class="mb-4">
+        <div class="form-row align-items-end">
+            <div class="col-md-3">
+                <label for="month">Tháng:</label>
+                <select id="month" name="month" class="form-control" asp-items="@(new SelectList(Enumerable.Range(1, 12).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }), "Value", "Text", Model.SelectedMonth))">
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="year">Năm:</label>
+                <select id="year" name="year" class="form-control" asp-items="@(new SelectList(Enumerable.Range(2000, (DateTime.Now.Year - 2000) + 1).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }), "Value", "Text", Model.SelectedYear))">
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Tra cứu</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Tháng</th>
+                <th>Năm</th>
+                <th>Tổng doanh thu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.RevenueReports)
+            {
+                <tr>
+                    <td>@report.Month</td>
+                    <td>@report.Year</td>
+                    <td>$@report.TotalRevenue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

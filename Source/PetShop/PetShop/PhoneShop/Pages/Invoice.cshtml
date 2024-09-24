@@ -1,0 +1,36 @@
+﻿@page
+@model             InvoiceModel
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<h1>Các hóa đơn của bạn</h1>
+<br />
+@if (Model.Invoices.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tổng tiền</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invoice in Model.Invoices)
+            {
+                <tr>
+                    <td>@invoice.InvoiceId</td>
+                    <td>@invoice.TotalAmount</td>
+                    <td>@invoice.InvoiceDate.ToString("dd/MM/yyyy")</td>
+                    <td>@(invoice.Status == 0 ? "Đang giao" : "Chờ xử lý")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p style="font-size: 20px; text-align:center;">Bạn chưa có bất kỳ hóa đơn nào</p>
+}
